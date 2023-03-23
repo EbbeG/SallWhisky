@@ -1,28 +1,36 @@
 package application.model;
 
-public class Reol {
-    private String lagerNavn;
-    private int reolNr;
-    private Fad[] pladser = new Fad[4];
-    private boolean fuld = false;
-    private int antalFad = 0;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    public Reol(String lagerNavn, int reolNr) {
-        this.lagerNavn = lagerNavn;
+public class Reol {
+    private int reolNr;
+    private Map<Integer, Fad> plads = new HashMap<>();
+
+
+    public Reol(int reolNr) {
         this.reolNr = reolNr;
     }
 
-    public void addFad(Fad fad) {
-        System.out.println(antalFad);
-        if (antalFad < 4) {
-            pladser[antalFad] = fad;
-            antalFad++;
-        } else {
-            fuld = true;
-        }
+    public void addFad(int pladsNr, Fad fad) {
+        plads.put(pladsNr, fad);
     }
 
-    public boolean isFuld() {
-        return fuld;
+    public void removeFad(int pladsNr) {
+        plads.remove(pladsNr);
     }
+
+    public Fad getFad(int pladsNr) {
+        return plads.get(pladsNr);
+    }
+
+    public List<Fad> getFade() {
+        return new ArrayList<>(plads.values());
+    }
+
+
+
+
 }

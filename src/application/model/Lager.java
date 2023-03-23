@@ -7,37 +7,33 @@ import java.util.Set;
 
 public class Lager {
 
+    private String lagerNavn;
     private static List<Reol> reoler = new ArrayList<>();
 
-    private static int reolIndex = 0;
-
-    public static void addFad(Fad fad) {
-        if (reoler.get(reolIndex).isFuld() && reolIndex < reoler.size() - 1) {
-            reolIndex++;
-        } else {
-            if (!reoler.get(reolIndex).isFuld())
-                reoler.get(reolIndex).addFad(fad);
-            else
-                throw new RuntimeException("Ikke flere ledige pladser");
-        }
-
+    public Lager(String lagerNavn) {
+        this.lagerNavn = lagerNavn;
     }
 
-    public Reol createReol(String lagerNavn, int reolNr) {
-        Reol reol = new Reol(lagerNavn, reolNr);
+    public Reol createReol(int reolNr) {
+        Reol reol = new Reol(reolNr);
         reoler.add(reol);
         return reol;
     }
-
-    public static void init() {
-        Reol reol1 = new Reol("Sall", 1);
-        Reol reol2 = new Reol("Sall", 2);
-//        Reol reol3 = new Reol("Sall", 3);
-
-        reoler.add(reol1);
-        reoler.add(reol2);
-//        reoler.add(reol3);
+    public void addReol(Reol reol) {
+        if (!reoler.contains(reol)) {
+            reoler.add(reol);
+        }
     }
 
+    public void removeReol(Reol reol) {
+        reoler.remove(reol);
+    }
 
+    public String getLagerNavn() {
+        return lagerNavn;
+    }
+
+    public static List<Reol> getReoler() {
+        return new ArrayList<>(reoler);
+    }
 }
