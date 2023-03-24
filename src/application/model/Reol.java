@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Reol {
     private int reolNr;
-    private Map<Integer, Fad> plads = new HashMap<>();
+    private Map<Integer, Fad> pladser = new HashMap<>();
 
 
     public Reol(int reolNr) {
@@ -15,19 +15,19 @@ public class Reol {
     }
 
     public void addFad(int pladsNr, Fad fad) {
-        plads.put(pladsNr, fad);
+        pladser.put(pladsNr, fad);
     }
 
     public void removeFad(int pladsNr) {
-        plads.remove(pladsNr);
+        pladser.remove(pladsNr);
     }
 
     public Fad getFad(int pladsNr) {
-        return plads.get(pladsNr);
+        return pladser.get(pladsNr);
     }
 
     public List<Fad> getFade() {
-        return new ArrayList<>(plads.values());
+        return new ArrayList<>(pladser.values());
     }
 
 

@@ -1,0 +1,6 @@
+Singleton i controller/storage?
+Exception i model eller controller
+fejlhåndtering f.eks. fad findes allerede
+composite indhold. fad/distillat
+påfyldning fra controller
+Hvad er maltbatch
