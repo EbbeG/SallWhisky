@@ -2,12 +2,11 @@ package application.model;
 
 import java.time.LocalDate;
 
-public class Destillering {
+public class Destillering extends Pourable {
     private LocalDate starDato, slutDato;
     // maltBatch?
     private int newMakeNr;
     private String medarbejderNavn;
-    private double volume;
     private double alkoholProcent;
     private Kornsort kornsort;
     private String rygeMateriale;
@@ -16,21 +15,15 @@ public class Destillering {
 
 
     public Destillering(LocalDate starDato, LocalDate slutDato, int newMakeNr, String medarbejderNavn, double volume, double alkoholProcent, Kornsort kornsort) {
+        super(volume);
         this.starDato = starDato;
         this.slutDato = slutDato;
         this.newMakeNr = newMakeNr;
         this.medarbejderNavn = medarbejderNavn;
-        this.volume = volume;
         this.alkoholProcent = alkoholProcent;
         this.kornsort = kornsort;
     }
 
-    public void reducerVolume(double liter) {
-        if (liter > volume) {
-            throw new IllegalArgumentException("Ikke nok destillat volume");
-        }
-        volume -= liter;
-    }
 
     public void setRygeMateriale(String rygeMateriale) {
         this.rygeMateriale = rygeMateriale;
