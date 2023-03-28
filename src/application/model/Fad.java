@@ -1,6 +1,8 @@
 package application.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Fad {
@@ -9,7 +11,7 @@ public class Fad {
     private double volume = 0;
     private String oprindelse;
     private String fadType;
-    private Map<Destillering, Double> indholdLiter = new HashMap<>();
+    private List<Påfyldning> påfyldninger = new ArrayList<>();
 
     public Fad(int nr, double størrelse, String oprindelse, String fadType) {
         this.nr = nr;
