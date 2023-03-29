@@ -39,4 +39,9 @@ public class Destillering {
     public void setKommentar(String kommentar) {
         this.kommentar = kommentar;
     }
+
+    @Override
+    public String toString() {
+        return "New make: " + newMakeNr;
+    }
 }

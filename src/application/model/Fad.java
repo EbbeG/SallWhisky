@@ -9,7 +9,7 @@ public class Fad {
     private double volume = 0;
     private String oprindelse;
     private String fadType;
-    private Map<Destillering, Double> indholdLiter = new HashMap<>();
+    private Væske væske = new Væske();
 
     public Fad(int nr, double størrelse, String oprindelse, String fadType) {
         this.nr = nr;
@@ -25,13 +25,23 @@ public class Fad {
         destillering.reducerVolume(liter);
         volume += liter;
         // Hvis fad allerede indeholder destillering, bliver volumen forøget
-        if (indholdLiter.containsKey(destillering)) {
-            liter += indholdLiter.get(destillering);
+        væske.addDestillering(destillering, liter);
+    }
+
+    public void fyldPå(Fad fad, double liter) {
+        if (volume + liter > størrelse) {
+            throw new IllegalArgumentException("Ikke nok plads på fad");
         }
+        fad.reducerVolume(liter);
+        volume += liter;
+        væske.addVæske(fad.getVæske(), liter);
+    }
 
-        indholdLiter.put(destillering, liter);
-
-
+    public void reducerVolume(double liter) {
+        if (liter > volume) {
+            throw new IllegalArgumentException("Ikke nok destillat volume");
+        }
+        volume -= liter;
     }
 
     public int getNr() {
@@ -52,6 +62,10 @@ public class Fad {
 
     public String getFadType() {
         return fadType;
+    }
+
+    public Væske getVæske() {
+        return væske;
     }
 
     @Override
