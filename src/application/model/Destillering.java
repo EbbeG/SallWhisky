@@ -44,4 +44,40 @@ public class Destillering {
     public String toString() {
         return "New make: " + newMakeNr;
     }
+
+    public LocalDate getStarDato() {
+        return starDato;
+    }
+
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
+    public int getNewMakeNr() {
+        return newMakeNr;
+    }
+
+    public String getMedarbejderNavn() {
+        return medarbejderNavn;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getAlkoholProcent() {
+        return alkoholProcent;
+    }
+
+    public Kornsort getKornsort() {
+        return kornsort;
+    }
+
+    public String getRygeMateriale() {
+        return rygeMateriale;
+    }
+
+    public String getKommentar() {
+        return kommentar;
+    }
 }

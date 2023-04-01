@@ -1,5 +1,6 @@
 package application.model;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ public class Fad {
     private double volume = 0;
     private String oprindelse;
     private String fadType;
-    private Væske væske = new Væske();
+    private Væske væske;
 
     public Fad(int nr, double størrelse, String oprindelse, String fadType) {
         this.nr = nr;
@@ -18,22 +19,29 @@ public class Fad {
         this.fadType = fadType;
     }
 
-    public void fyldPå(Destillering destillering, double liter) {
+    public void fyldPå(Destillering destillering, double liter, LocalDate påfyldningsDato) {
         if (volume + liter > størrelse) {
             throw new IllegalArgumentException("Ikke nok plads på fad");
         }
         destillering.reducerVolume(liter);
         volume += liter;
-        // Hvis fad allerede indeholder destillering, bliver volumen forøget
+        // Hvis fadet er tomt, laves en ny væske hvor første lagrings dato bliver sat til påfyldningsDato
+        if (væske == null) {
+            væske = new Væske(påfyldningsDato);
+        }
         væske.addDestillering(destillering, liter);
     }
 
-    public void fyldPå(Fad fad, double liter) {
+    public void fyldPå(Fad fad, double liter, LocalDate påfyldningsDato) {
         if (volume + liter > størrelse) {
             throw new IllegalArgumentException("Ikke nok plads på fad");
         }
         fad.reducerVolume(liter);
         volume += liter;
+        // Hvis fadet er tomt, laves ny væske hvor første lagrings dato bliver sat til den tilsatte væskes første lagrings dato
+        if (væske == null) {
+            væske = new Væske(fad.getVæske().getFørsteLagring());
+        }
         væske.addVæske(fad.getVæske(), liter);
     }
 
@@ -68,8 +76,16 @@ public class Fad {
         return væske;
     }
 
+    public String getIndhold() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this + "\n");
+        sb.append("Lagringsdato: " + væske.getFørsteLagring() + "\n");
+        sb.append(væske.getIndhold());
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
-        return "nr: " + nr + " Fadtype: " + fadType;
+        return "Fad " + nr + " (" + fadType + ")";
     }
 }
