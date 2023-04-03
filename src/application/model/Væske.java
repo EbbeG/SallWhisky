@@ -8,15 +8,18 @@ public class Væske {
     private Map<Destillering, Double> destilleringer = new HashMap<>();
     private Map<Væske, Double> væsker = new HashMap<>();
     private LocalDate førsteLagring;
+    private Fad fad;
 
     public Væske(Væske væske) {
         this.destilleringer = væske.getDestilleringer();
         this.væsker = væske.getVæsker();
         this.førsteLagring = væske.getFørsteLagring();
+        this.fad = væske.getFad();
     }
 
-    public Væske(LocalDate førsteLagring) {
+    public Væske(LocalDate førsteLagring, Fad fad) {
         this.førsteLagring = førsteLagring;
+        this.fad = fad;
     }
 
     public void addDestillering(Destillering destillering, double liter) {
@@ -36,18 +39,21 @@ public class Væske {
     public String getIndhold() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Destillater:\n");
 
-        for (Destillering destillering : destilleringer.keySet()) {
-            String s = "New Make: " + destillering.getNewMakeNr() + ", " + destilleringer.get(destillering) + " Liter\n";
-            sb.append(s.indent(2));
+        if (!destilleringer.isEmpty()) {
+            sb.append("Destillater:\n");
+
+            for (Destillering destillering : destilleringer.keySet()) {
+                String s = "New Make: " + destillering.getNewMakeNr() + ", " + destilleringer.get(destillering) + " Liter\n";
+                sb.append(s.indent(2));
+            }
         }
 
         if (!væsker.isEmpty()) {
             sb.append("\nVæsker:\n");
 
             for (Væske væske : væsker.keySet()) {
-                sb.append(væsker.get(væske) + " Liter\n");
+                sb.append(væsker.get(væske) + " Liter fra " + væske.getFad() + "\n");
                 String s = væske.getIndhold();
                 sb.append(s.indent(2));
             }
@@ -76,5 +82,9 @@ public class Væske {
 
     public LocalDate getFørsteLagring() {
         return førsteLagring;
+    }
+
+    public Fad getFad() {
+        return fad;
     }
 }

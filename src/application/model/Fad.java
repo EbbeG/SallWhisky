@@ -27,7 +27,7 @@ public class Fad {
         volume += liter;
         // Hvis fadet er tomt, laves en ny væske hvor første lagrings dato bliver sat til påfyldningsDato
         if (væske == null) {
-            væske = new Væske(påfyldningsDato);
+            væske = new Væske(påfyldningsDato, this);
         }
         væske.addDestillering(destillering, liter);
     }
@@ -40,7 +40,7 @@ public class Fad {
         volume += liter;
         // Hvis fadet er tomt, laves ny væske hvor første lagrings dato bliver sat til den tilsatte væskes første lagrings dato
         if (væske == null) {
-            væske = new Væske(fad.getVæske().getFørsteLagring());
+            væske = new Væske(fad.getVæske().getFørsteLagring(), this);
         }
         væske.addVæske(fad.getVæske(), liter);
     }
