@@ -3,7 +3,7 @@ package application.model;
 import java.time.LocalDate;
 
 public class Destillering {
-    private LocalDate starDato, slutDato;
+    private LocalDate startDato, slutDato;
     // maltBatch?
     private int newMakeNr;
     private String medarbejderNavn;
@@ -15,8 +15,8 @@ public class Destillering {
     // Skal destillering kunne se hvilke fade det ligger på? List<Fad>
 
 
-    public Destillering(LocalDate starDato, LocalDate slutDato, int newMakeNr, String medarbejderNavn, double volume, double alkoholProcent, Kornsort kornsort) {
-        this.starDato = starDato;
+    public Destillering(LocalDate startDato, LocalDate slutDato, int newMakeNr, String medarbejderNavn, double volume, double alkoholProcent, Kornsort kornsort) {
+        this.startDato = startDato;
         this.slutDato = slutDato;
         this.newMakeNr = newMakeNr;
         this.medarbejderNavn = medarbejderNavn;
@@ -46,7 +46,7 @@ public class Destillering {
     }
 
     public LocalDate getStarDato() {
-        return starDato;
+        return startDato;
     }
 
     public LocalDate getSlutDato() {
