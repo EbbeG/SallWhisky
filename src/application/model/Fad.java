@@ -1,10 +1,11 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Fad {
+public class Fad implements Serializable {
     private int nr;
     private double størrelse;
     private double volume = 0;

@@ -1,10 +1,11 @@
 package application.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Lager {
+public class Lager implements Serializable {
 
     private String lagerNavn;
     private static List<Reol> reoler = new ArrayList<>();
@@ -34,5 +35,10 @@ public class Lager {
 
     public static List<Reol> getReoler() {
         return new ArrayList<>(reoler);
+    }
+
+    @Override
+    public String toString() {
+        return lagerNavn;
     }
 }

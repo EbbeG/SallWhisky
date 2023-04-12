@@ -1,4 +1,6 @@
 package application.model;
 
-public class Flaske {
+import java.io.Serializable;
+
+public class Flaske implements Serializable {
 }

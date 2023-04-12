@@ -1,10 +1,11 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Væske {
+public class Væske implements Serializable {
     private Map<Destillering, Double> destilleringer = new HashMap<>();
     private Map<Væske, Double> væsker = new HashMap<>();
     private LocalDate førsteLagring;

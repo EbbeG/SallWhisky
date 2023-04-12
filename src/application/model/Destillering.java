@@ -1,8 +1,9 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Destillering {
+public class Destillering implements Serializable {
     private LocalDate startDato, slutDato;
     // maltBatch?
     private int newMakeNr;

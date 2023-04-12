@@ -1,9 +1,10 @@
 package application.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Whisky {
+public class Whisky implements Serializable {
     int nr;
     WhiskyType type;
     Væske væske;

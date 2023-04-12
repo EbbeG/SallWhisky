@@ -6,6 +6,7 @@ import storage.Storage;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 public class Controller {
@@ -78,6 +79,10 @@ public class Controller {
         for (Map.Entry<Fad, Double> fadDoubleEntry : fade.entrySet()) {
             fad.fyldPå(fadDoubleEntry.getKey(), fadDoubleEntry.getValue(), påfyldningsDato);
         }
+    }
+
+    public List<Lager> getLagre() {
+        return storage.getLagre();
     }
 
 

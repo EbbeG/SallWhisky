@@ -3,10 +3,11 @@ package storage;
 import application.model.Destillering;
 import application.model.Lager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage {
+public class Storage implements Serializable {
     private static Storage storage;
 
     private List<Lager> lagre;

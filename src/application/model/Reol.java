@@ -1,11 +1,12 @@
 package application.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Reol {
+public class Reol implements Serializable {
     private int reolNr;
     private Map<Integer, Fad> pladser = new HashMap<>();
 
