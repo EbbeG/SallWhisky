@@ -62,6 +62,8 @@ public class StartWindow extends Application {
         Tab tabWhisky = new Tab("Whisky");
         tabPane.getTabs().add(tabWhisky);
 
+        tabWhisky.setContent(WhiskyPane.getContent());
+
 
 
 

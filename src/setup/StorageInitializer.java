@@ -28,7 +28,7 @@ public class StorageInitializer {
         Reol reol4 = controller.createReol(container, 4);
 
         Fad fad1 = controller.createFad(1, 100, "Spanien", "Bourbon");
-        Fad fad2 = controller.createFad(2, 150, "Spanien", "Bourbon");
+        Fad fad2 = controller.createFad(2, 200, "Spanien", "Bourbon");
         Fad fad3 = controller.createFad(3, 100, "England", "Sherry");
         Fad fad4 = controller.createFad(4, 150, "England", "Sherry");
 
@@ -42,11 +42,11 @@ public class StorageInitializer {
         Destillering destillering2 = controller.createDestillering(LocalDate.of(2019, 01, 1), LocalDate.of(2022, 01, 1),2, "Snævar", 150, 49, Kornsort.IRINA);
 
         Map<Destillering, Double> map = new HashMap<>();
-        map.put(destillering1, 100.0);
+        map.put(destillering1, 50.0);
 
         Map<Destillering, Double> map2 = new HashMap<>();
-        map.put(destillering2, 150.0);
-        map.put(destillering1, 100.0);
+        map2.put(destillering2, 150.0);
+        map2.put(destillering1, 50.0);
 
         controller.fyldPåFadFraDestillering(fad1, map , LocalDate.of(2019,02,3));
         controller.fyldPåFadFraDestillering(fad2, map2 , LocalDate.of(2019,02,3));

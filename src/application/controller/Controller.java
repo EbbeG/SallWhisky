@@ -80,6 +80,7 @@ public class Controller {
     }
 
     public void fyldPåFadFraDestillering(Fad fad, Map<Destillering, Double> destilleringer, LocalDate påfyldningsDato) {
+
         for (Map.Entry<Destillering, Double> destilleringDoubleEntry : destilleringer.entrySet()) {
             fad.fyldPå(destilleringDoubleEntry.getKey(), destilleringDoubleEntry.getValue(), påfyldningsDato);
         }
@@ -101,6 +102,10 @@ public class Controller {
 
     public List<Fad> getFade() {
         return storage.getFade();
+    }
+
+    public List<Whisky> getWhiskies() {
+        return storage.getWhiskies();
     }
 
 

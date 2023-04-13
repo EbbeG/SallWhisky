@@ -6,12 +6,14 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class FadePane {
 
     private static ListView<Fad> lvwFade;
+    private static TextArea txaInfo;
     private static Controller controller = Controller.getController();
 
     public static Pane getContent() {
@@ -25,10 +27,15 @@ public class FadePane {
 
         // Listviews
 
-        ListView<Fad> lvwFade = new ListView<>();
+        lvwFade = new ListView<>();
         lvwFade.getItems().setAll(controller.getFade());
         lvwFade.getSelectionModel().selectedItemProperty().addListener((ov, oldFad, newFad) -> selectedFadChanged());
         pane.add(lvwFade, 0, 1);
+
+        // Textarea
+        txaInfo = new TextArea();
+        txaInfo.setEditable(false);
+        pane.add(txaInfo, 1, 1);
 
         // Buttons
 
@@ -36,8 +43,18 @@ public class FadePane {
         btnCreateFad.setOnAction(e -> createFadAction());
         pane.add(btnCreateFad, 0, 2);
 
+        Button btnVisIndhold = new Button("Vis Indhold");
+        btnVisIndhold.setOnAction(e -> visIndholdAction());
+        pane.add(btnVisIndhold, 0, 3);
+
 
         return pane;
+    }
+
+    private static void visIndholdAction() {
+        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+        IndholdWindow dia = new IndholdWindow("Indhold", fad);
+        dia.showAndWait();
     }
 
     private static void createFadAction() {

@@ -54,9 +54,22 @@ public class FadWindow extends Stage {
 
         // Buttons
         Button btnOpret = new Button("Opret");
-
-
-
+        btnOpret.setOnAction(event -> opretAction());
+        pane.add(btnOpret, 0, 4);
 
     }
+
+    private void opretAction() {
+        int nr = Integer.parseInt(txfNr.getText().trim());
+        double størrelse = Double.parseDouble(txfStørrelse.getText().trim());
+        String oprindelse = txfOprindelse.getText().trim();
+        String fadtype = txfFadtype.getText().trim();
+
+        controller.createFad(nr, størrelse, oprindelse, fadtype);
+
+        hide();
+
+    }
+
+
 }
