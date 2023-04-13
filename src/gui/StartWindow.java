@@ -46,13 +46,13 @@ public class StartWindow extends Application {
         tabPane.getTabs().add(tabLager);
 
         tabLager.setContent(LagerPane.getContent());
-        tabLager.setOnSelectionChanged(event -> LagerPane.updateControls());
+        //tabLager.setOnSelectionChanged(event -> LagerPane.updateControls());
 
         Tab tabDestilleringer = new Tab("Destilleringer");
         tabPane.getTabs().add(tabDestilleringer);
 
         tabDestilleringer.setContent(DestilleringPane.getContent());
-        tabDestilleringer.setOnSelectionChanged(event -> DestilleringPane.updateControls());
+        //tabDestilleringer.setOnSelectionChanged(event -> DestilleringPane.updateControls());
 
 
 

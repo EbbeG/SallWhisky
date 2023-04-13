@@ -30,9 +30,14 @@ public class LagerPane {
 
         // Listviews
         lvwLagre = new ListView<>();
+        lvwLagre.getItems().setAll(controller.getLagre());
+        lvwLagre.getSelectionModel().selectedItemProperty().addListener((ov, oldLager, newLager) -> selectedLagerChanged());
+
         pane.add(lvwLagre, 0, 1, 1, 2);
 
+
         lvwReoler = new ListView<>();
+        lvwReoler.getSelectionModel().selectedItemProperty().addListener((ov, oldReol, newReol) -> selectedReolChanged());
         pane.add(lvwReoler, 1, 1, 1, 2);
 
         lvwFade = new ListView<>();
@@ -43,30 +48,62 @@ public class LagerPane {
         btnCreateLager.setOnAction(e -> createLagerAction());
 
         Button btnCreateReol = new Button("Opret Reol");
+        btnCreateReol.setOnAction(e -> createReolAction());
 
         Button btnVisIndhold = new Button("Vis Indhold");
+        btnVisIndhold.setOnAction(e -> visIndholdAction());
 
         pane.add(btnCreateLager, 0, 3);
         pane.add(btnCreateReol, 1, 3);
         pane.add(btnVisIndhold, 2, 3);
 
+        if (lvwLagre.getItems().size() > 0) {
+            lvwLagre.getSelectionModel().select(0);
+        }
+
         return pane;
 
     }
 
-    public static void updateControls() {
 
+    private static void selectedLagerChanged() {
+        Lager lager = lvwLagre.getSelectionModel().getSelectedItem();
+        if (lager != null) {
+            lvwReoler.getItems().setAll(lager.getReoler());
+        } else {
+            lvwReoler.getItems().clear();
+        }
     }
+
+    private static void selectedReolChanged() {
+        Reol reol = lvwReoler.getSelectionModel().getSelectedItem();
+        if (reol != null) {
+            lvwFade.getItems().setAll(reol.getFade());
+        } else {
+            lvwFade.getItems().clear();
+        }
+    }
+
+
+    private static void visIndholdAction() {
+        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+        IndholdWindow dia = new IndholdWindow("Indhold", fad);
+        dia.showAndWait();
+    }
+
 
     private static void createLagerAction() {
         LagerWindow dia = new LagerWindow("Opret Lager");
         dia.showAndWait();
 
         lvwLagre.getItems().setAll(controller.getLagre());
-        System.out.println(controller.getLagre());
+    }
 
+    private static void createReolAction() {
+        Lager lager = lvwLagre.getSelectionModel().getSelectedItem();
+        ReolWindow dia = new ReolWindow("Opret Reol", lager);
+        dia.showAndWait();
 
-
-
+        lvwReoler.getItems().setAll(lager.getReoler());
     }
 }

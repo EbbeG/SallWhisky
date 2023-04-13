@@ -8,7 +8,7 @@ import java.util.List;
 public class Lager implements Serializable {
 
     private String lagerNavn;
-    private static List<Reol> reoler = new ArrayList<>();
+    private List<Reol> reoler = new ArrayList<>();
 
     public Lager(String lagerNavn) {
         this.lagerNavn = lagerNavn;
@@ -33,7 +33,7 @@ public class Lager implements Serializable {
         return lagerNavn;
     }
 
-    public static List<Reol> getReoler() {
+    public List<Reol> getReoler() {
         return new ArrayList<>(reoler);
     }
 

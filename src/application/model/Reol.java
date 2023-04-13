@@ -31,7 +31,8 @@ public class Reol implements Serializable {
         return new ArrayList<>(pladser.values());
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Reol " + reolNr;
+    }
 }
