@@ -82,6 +82,22 @@ public class Destillering implements Serializable {
     }
 
     public String getInfo() {
-        return "New Make:" + newMakeNr;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("New make: " + newMakeNr + "\n");
+        sb.append("Start dato: " + startDato + "\n");
+        sb.append("Slut dato: " + slutDato + "\n");
+        sb.append("Medarbejder: " + medarbejderNavn + "\n");
+        sb.append("Liter: " + volume + "\n");
+        sb.append("Alkohol procent: " + alkoholProcent + "\n");
+        sb.append("Kornsort: " + kornsort + "\n");
+
+        if (rygeMateriale != null){
+            sb.append("Ryge materiale: " + rygeMateriale + "\n");
+        } if (kommentar != null){
+            sb.append("Kommentar: " + kommentar + "\n");
+        }
+
+        return sb.toString();
     }
 }
