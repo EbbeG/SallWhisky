@@ -23,6 +23,7 @@ public class LagerPane {
         pane.setHgap(20);
         pane.setVgap(10);
 
+
         // Labels
         pane.add(new Label("Lagre:"), 0, 0);
         pane.add(new Label("Reoler:"), 1, 0);
@@ -33,15 +34,15 @@ public class LagerPane {
         lvwLagre.getItems().setAll(controller.getLagre());
         lvwLagre.getSelectionModel().selectedItemProperty().addListener((ov, oldLager, newLager) -> selectedLagerChanged());
 
-        pane.add(lvwLagre, 0, 1, 1, 2);
+        pane.add(lvwLagre, 0, 1);
 
 
         lvwReoler = new ListView<>();
         lvwReoler.getSelectionModel().selectedItemProperty().addListener((ov, oldReol, newReol) -> selectedReolChanged());
-        pane.add(lvwReoler, 1, 1, 1, 2);
+        pane.add(lvwReoler, 1, 1);
 
         lvwFade = new ListView<>();
-        pane.add(lvwFade, 2, 1, 1, 2);
+        pane.add(lvwFade, 2, 1, 2, 1);
 
         // Buttons
         Button btnCreateLager = new Button("Opret Lager");
@@ -50,18 +51,26 @@ public class LagerPane {
         Button btnCreateReol = new Button("Opret Reol");
         btnCreateReol.setOnAction(e -> createReolAction());
 
+        Button btnTilføjFad = new Button("Tilføj Fad");
+        btnTilføjFad.setOnAction(e -> tilføjFadAction());
+
         Button btnVisIndhold = new Button("Vis Indhold");
         btnVisIndhold.setOnAction(e -> visIndholdAction());
 
         pane.add(btnCreateLager, 0, 3);
         pane.add(btnCreateReol, 1, 3);
-        pane.add(btnVisIndhold, 2, 3);
+        pane.add(btnTilføjFad, 2, 3);
+        pane.add(btnVisIndhold, 3, 3);
 
         if (lvwLagre.getItems().size() > 0) {
             lvwLagre.getSelectionModel().select(0);
         }
 
         return pane;
+
+    }
+
+    private static void tilføjFadAction() {
 
     }
 
