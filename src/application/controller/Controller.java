@@ -66,7 +66,9 @@ public class Controller {
     }
 
     public Fad createFad(int nr, double størrelse, String oprindelse, String fadType) {
-        return new Fad(nr, størrelse, oprindelse, fadType);
+        Fad fad = new Fad(nr, størrelse, oprindelse, fadType);
+        storage.addFad(fad);
+        return fad;
     }
 
     public void addFadToReol(Reol reol, int pladsNr, Fad fad) {
@@ -95,6 +97,10 @@ public class Controller {
 
     public List<Destillering> getDestilleringer() {
         return storage.getDestilleringer();
+    }
+
+    public List<Fad> getFade() {
+        return storage.getFade();
     }
 
 

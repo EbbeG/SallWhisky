@@ -57,6 +57,8 @@ public class StartWindow extends Application {
         Tab tabFade = new Tab("Fade");
         tabPane.getTabs().add(tabFade);
 
+        tabFade.setContent(FadePane.getContent());
+
         Tab tabWhisky = new Tab("Whisky");
         tabPane.getTabs().add(tabWhisky);
 

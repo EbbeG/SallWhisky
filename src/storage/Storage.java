@@ -1,6 +1,7 @@
 package storage;
 
 import application.model.Destillering;
+import application.model.Fad;
 import application.model.Lager;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class Storage implements Serializable {
 
     private List<Lager> lagre;
     private List<Destillering> destilleringer;
+    private List<Fad> fade;
 
     public static Storage getStorage() {
         if (storage == null) {
@@ -23,6 +25,7 @@ public class Storage implements Serializable {
     private Storage() {
         lagre = new ArrayList<>();
         destilleringer = new ArrayList<>();
+        fade = new ArrayList<>();
     }
 
     // -------------------------------------------------------------------------
@@ -52,6 +55,20 @@ public class Storage implements Serializable {
 
     public void removeDestillering(Destillering destillering) {
         destilleringer.remove(destillering);
+    }
+
+    // -------------------------------------------------------------------------
+
+    public List<Fad> getFade() {
+        return new ArrayList<>(fade);
+    }
+
+    public void addFad(Fad fad) {
+        fade.add(fad);
+    }
+
+    public void removeFad(Fad fad) {
+        fade.remove(fad);
     }
 
 }
