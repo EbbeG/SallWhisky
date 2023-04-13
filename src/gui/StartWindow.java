@@ -54,6 +54,12 @@ public class StartWindow extends Application {
         tabDestilleringer.setContent(DestilleringPane.getContent());
         //tabDestilleringer.setOnSelectionChanged(event -> DestilleringPane.updateControls());
 
+        Tab tabFade = new Tab("Fade");
+        tabPane.getTabs().add(tabFade);
+
+        Tab tabWhisky = new Tab("Whisky");
+        tabPane.getTabs().add(tabWhisky);
+
 
 
 

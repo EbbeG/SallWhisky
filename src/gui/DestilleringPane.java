@@ -1,5 +1,6 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.Destillering;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ public class DestilleringPane {
 
     private static ListView<Destillering> lvwDestilleringer;
     private static TextArea txaInfo;
+    private static Controller controller = Controller.getController();
 
     public static Pane getContent() {
         GridPane pane = new GridPane();
@@ -27,6 +29,8 @@ public class DestilleringPane {
         // Listviews
 
         lvwDestilleringer = new ListView<>();
+        lvwDestilleringer.getItems().setAll(controller.getDestilleringer());
+        lvwDestilleringer.getSelectionModel().selectedItemProperty().addListener((ov, oldDestillering, newDestillering) -> selectedDestilleringChanged());
         pane.add(lvwDestilleringer, 0, 1);
 
         // TextArea
@@ -35,7 +39,8 @@ public class DestilleringPane {
         pane.add(txaInfo, 1, 1);
 
         // Buttons
-        Button btnCreateDestillering = new Button("Opret Destillering");
+        Button btnCreateDestillering = new Button("Tilføj Destillering");
+        btnCreateDestillering.setOnAction(e -> createDestilleringAction());
 
         pane.add(btnCreateDestillering, 0, 2);
 
@@ -44,7 +49,26 @@ public class DestilleringPane {
 
     }
 
+    private static void selectedDestilleringChanged() {
+        updateControls();
+    }
+
     public static void updateControls() {
+        Destillering destillering = lvwDestilleringer.getSelectionModel().getSelectedItem();
+        if (destillering != null) {
+            txaInfo.setText(destillering.getInfo());
+        } else {
+            txaInfo.clear();
+        }
+
+    }
+
+    private static void createDestilleringAction() {
+        DestilleringWindow dia = new DestilleringWindow("Tilføj Destillering");
+        dia.showAndWait();
+
+        lvwDestilleringer.getItems().setAll(controller.getDestilleringer());
+
 
     }
 }

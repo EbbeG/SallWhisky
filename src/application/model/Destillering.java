@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 public class Destillering implements Serializable {
     private LocalDate startDato, slutDato;
-    // maltBatch?
     private int newMakeNr;
     private String medarbejderNavn;
     private double volume;
@@ -80,5 +79,9 @@ public class Destillering implements Serializable {
 
     public String getKommentar() {
         return kommentar;
+    }
+
+    public String getInfo() {
+        return "New Make:" + newMakeNr;
     }
 }

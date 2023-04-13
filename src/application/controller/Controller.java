@@ -44,6 +44,14 @@ public class Controller {
         storage.removeDestillering(destillering);
     }
 
+    public void setRygemateriale(Destillering destillering, String rygemateriale) {
+        destillering.setRygeMateriale(rygemateriale);
+    }
+
+    public void setKommentar(Destillering destillering, String kommentar) {
+        destillering.setKommentar(kommentar);
+    }
+
     public Reol createReol(int reolNr) {
         Reol reol = new Reol(reolNr);
         return reol;
@@ -83,6 +91,10 @@ public class Controller {
 
     public List<Lager> getLagre() {
         return storage.getLagre();
+    }
+
+    public List<Destillering> getDestilleringer() {
+        return storage.getDestilleringer();
     }
 
 

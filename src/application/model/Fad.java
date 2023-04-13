@@ -92,4 +92,6 @@ public class Fad implements Serializable {
     public String toString() {
         return "Fad " + nr + " (" + fadType + ")";
     }
+
+
 }
