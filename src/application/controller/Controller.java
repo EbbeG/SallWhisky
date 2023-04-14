@@ -79,6 +79,12 @@ public class Controller {
         return whisky;
     }
 
+    public Flaske createFlaske(int nr, int antal, Whisky whisky) {
+        Flaske flaske = new Flaske(nr, antal, whisky);
+        storage.addFlaske(flaske);
+        return flaske;
+    }
+
     public void addFadToReol(Reol reol, int pladsNr, Fad fad) {
         reol.addFad(pladsNr, fad);
     }
