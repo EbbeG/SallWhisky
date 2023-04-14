@@ -43,8 +43,7 @@ public class FlaskePane {
 
         pane.add(btnCreateFlaske, 0, 2);
 
-
-
+        return pane;
     }
 
     private static void createFlaskeAction() {
@@ -57,7 +56,7 @@ public class FlaskePane {
     private static void updateControls() {
         Flaske flaske = lvwFlasker.getSelectionModel().getSelectedItem();
         if (flaske != null) {
-            txaInfo.setText(flaske.getInfo());
+            txaInfo.setText(flaske.visHistorik());
         } else {
             txaInfo.clear();
         }

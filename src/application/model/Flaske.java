@@ -7,11 +7,16 @@ public class Flaske implements Serializable {
     private int mængde;
     private Whisky whisky;
 
-    public Flaske(int flaskeNr, int mængde) {
+    public Flaske(int flaskeNr, int mængde, Whisky whisky) {
         this.flaskeNr = flaskeNr;
         this.mængde = mængde;
+        this.whisky = whisky;
     }
-    public void visHistorik(){
+    public String visHistorik() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Flaske nr: " + flaskeNr + ", antal: " + mængde + "\n");
+        sb.append(whisky.getInfo());
+        return sb.toString();
 
     }
 

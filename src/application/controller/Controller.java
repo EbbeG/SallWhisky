@@ -127,6 +127,10 @@ public class Controller {
         return storage.getWhiskies();
     }
 
+    public List<Flaske> getFlasker() {
+        return storage.getFlasker();
+    }
+
 
 
     public void loadStorage() {
