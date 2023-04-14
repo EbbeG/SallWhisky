@@ -1,8 +1,6 @@
 package gui;
 
-import application.controller.Controller;
-import application.model.Fad;
-import application.model.Lager;
+import application.model.Destillering;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -11,19 +9,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+public class DestilleringInfoWindow extends Stage {
+    private Destillering destillering;
 
-
-public class IndholdWindow extends Stage {
-    private Fad fad;
-
-
-    public IndholdWindow(String title, Fad fad) {
+    public DestilleringInfoWindow(String title, Destillering destillering) {
         initStyle(StageStyle.UTILITY);
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
         this.setTitle(title);
 
-        this.fad = fad;
+        this.destillering = destillering;
 
         GridPane pane = new GridPane();
         initContent(pane);
@@ -40,10 +35,9 @@ public class IndholdWindow extends Stage {
 
         TextArea txaIndhold = new TextArea();
         txaIndhold.setEditable(false);
-        txaIndhold.setText(fad.getIndhold());
+        txaIndhold.setText(destillering.getInfo());
 
         pane.add(txaIndhold, 0, 0);
-
 
     }
 }

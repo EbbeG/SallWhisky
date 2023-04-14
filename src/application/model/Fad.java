@@ -80,6 +80,7 @@ public class Fad implements Serializable {
     public String getIndhold() {
         StringBuilder sb = new StringBuilder();
         sb.append(this + "\n");
+        sb.append("Nuværende Volume: " + volume + "\n");
 
         if (væske != null) {
             sb.append("Lagringsdato: " + væske.getFørsteLagring() + "\n");

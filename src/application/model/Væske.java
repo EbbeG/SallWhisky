@@ -24,7 +24,6 @@ public class Væske implements Serializable {
     }
 
     public Væske() {
-
     }
 
     public void addDestillering(Destillering destillering, double liter) {

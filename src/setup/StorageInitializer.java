@@ -38,8 +38,8 @@ public class StorageInitializer {
         controller.addFadToReol(reol3, 1, fad2);
         controller.addFadToReol(reol4, 1, fad4);
 
-        Destillering destillering1 = controller.createDestillering(LocalDate.of(2020, 01, 1), LocalDate.of(2023, 01, 1),1, "Snævar", 100, 53, Kornsort.EVERGREEN);
-        Destillering destillering2 = controller.createDestillering(LocalDate.of(2019, 01, 1), LocalDate.of(2022, 01, 1),2, "Snævar", 150, 49, Kornsort.IRINA);
+        Destillering destillering1 = controller.createDestillering(LocalDate.of(2020, 01, 1), LocalDate.of(2023, 01, 1),1, "Snævar", 500, 53, Kornsort.EVERGREEN);
+        Destillering destillering2 = controller.createDestillering(LocalDate.of(2019, 01, 1), LocalDate.of(2022, 01, 1),2, "Snævar", 700, 49, Kornsort.IRINA);
 
         Map<Destillering, Double> map = new HashMap<>();
         map.put(destillering1, 50.0);
