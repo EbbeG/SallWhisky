@@ -37,7 +37,6 @@ public class DestilleringTest {
 
         Destillering destillering = new Destillering(startDato, slutDato, newMakeNr, medarbejderNavn, volume, alkoholProcent, kornsort);
 
-        // Test reducing volume with valid input
         destillering.reducerVolume(5.0);
         assertEquals(10.0, destillering.getVolume(), DELTA);
     }
@@ -55,7 +54,6 @@ public class DestilleringTest {
 
         Destillering destillering = new Destillering(startDato, slutDato, newMakeNr, medarbejderNavn, volume, alkoholProcent, kornsort);
 
-        // Test reducing volume with valid input
         destillering.reducerVolume(11.0);
         assertEquals(-1.0, destillering.getVolume(), DELTA);
         assertThrows(IllegalArgumentException.class, () -> destillering.reducerVolume(11.0));
