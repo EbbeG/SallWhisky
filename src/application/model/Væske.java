@@ -23,9 +23,7 @@ public class Væske implements Serializable {
         this.fad = fad;
     }
 
-    public Væske() {
 
-    }
 
     public void addDestillering(Destillering destillering, double liter) {
         // Hvis væske allerede indeholder destillering, bliver volumen bare forøget

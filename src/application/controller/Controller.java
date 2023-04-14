@@ -6,6 +6,8 @@ import storage.Storage;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +68,15 @@ public class Controller {
     }
 
     public Fad createFad(int nr, double størrelse, String oprindelse, String fadType) {
-        return new Fad(nr, størrelse, oprindelse, fadType);
+        Fad fad = new Fad(nr, størrelse, oprindelse, fadType);
+        storage.addFad(fad);
+        return fad;
+    }
+
+    public Whisky createWhisky(int nr, WhiskyType type, String beskrivelse, double alkoholProcent, double fortyndelseMængde, Map<Fad, Double> fade) {
+        Whisky whisky = new Whisky(nr, type, beskrivelse, alkoholProcent, fortyndelseMængde, fade);
+        storage.addWhisky(whisky);
+        return whisky;
     }
 
     public void addFadToReol(Reol reol, int pladsNr, Fad fad) {
@@ -78,6 +88,7 @@ public class Controller {
     }
 
     public void fyldPåFadFraDestillering(Fad fad, Map<Destillering, Double> destilleringer, LocalDate påfyldningsDato) {
+
         for (Map.Entry<Destillering, Double> destilleringDoubleEntry : destilleringer.entrySet()) {
             fad.fyldPå(destilleringDoubleEntry.getKey(), destilleringDoubleEntry.getValue(), påfyldningsDato);
         }
@@ -89,12 +100,31 @@ public class Controller {
         }
     }
 
+    public List<Fad> getModneFade() {
+        List<Fad> res = new ArrayList<>();
+        for (Fad fad : getFade()) {
+            if (fad.getVæske() != null && 3 >= ChronoUnit.YEARS.between(fad.getVæske().getFørsteLagring(), LocalDate.now())) {
+                res.add(fad);
+            }
+        }
+        return res;
+    }
+
+
     public List<Lager> getLagre() {
         return storage.getLagre();
     }
 
     public List<Destillering> getDestilleringer() {
         return storage.getDestilleringer();
+    }
+
+    public List<Fad> getFade() {
+        return storage.getFade();
+    }
+
+    public List<Whisky> getWhiskies() {
+        return storage.getWhiskies();
     }
 
 
