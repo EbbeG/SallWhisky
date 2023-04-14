@@ -6,6 +6,8 @@ import storage.Storage;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -71,6 +73,12 @@ public class Controller {
         return fad;
     }
 
+    public Whisky createWhisky(int nr, WhiskyType type, String beskrivelse, double alkoholProcent, double fortyndelseMængde, Map<Fad, Double> fade) {
+        Whisky whisky = new Whisky(nr, type, beskrivelse, alkoholProcent, fortyndelseMængde, fade);
+        storage.addWhisky(whisky);
+        return whisky;
+    }
+
     public void addFadToReol(Reol reol, int pladsNr, Fad fad) {
         reol.addFad(pladsNr, fad);
     }
@@ -91,6 +99,17 @@ public class Controller {
             fad.fyldPå(fadDoubleEntry.getKey(), fadDoubleEntry.getValue(), påfyldningsDato);
         }
     }
+
+    public List<Fad> getModneFade() {
+        List<Fad> res = new ArrayList<>();
+        for (Fad fad : getFade()) {
+            if (fad.getVæske() != null && 3 >= ChronoUnit.YEARS.between(fad.getVæske().getFørsteLagring(), LocalDate.now())) {
+                res.add(fad);
+            }
+        }
+        return res;
+    }
+
 
     public List<Lager> getLagre() {
         return storage.getLagre();
