@@ -27,4 +27,8 @@ public class Flaske implements Serializable {
         return mængde;
     }
 
+    @Override
+    public String toString() {
+        return "Flaske " + flaskeNr + " (" +  mængde + " stk.)";
+    }
 }

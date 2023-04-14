@@ -52,8 +52,8 @@ public class StorageInitializer {
         controller.fyldPåFadFraDestillering(fad2, map2 , LocalDate.of(2019,02,3));
 
         Map<Fad, Double> fadMap = new HashMap<>();
-        fadMap.put(fad1, 30.0);
-        fadMap.put(fad2, 40.0);
+        fadMap.put(fad1, 10.0);
+        fadMap.put(fad2, 20.0);
         Whisky whisky1 = controller.createWhisky(1, WhiskyType.SINGLEMALT, "Kraftig whisky", 55.5, 5, fadMap);
         Whisky whisky2 = controller.createWhisky(1,WhiskyType.SINGLECASK, "Mild whisky", 49, 10, fadMap);
 
