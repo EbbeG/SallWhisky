@@ -103,7 +103,7 @@ public class Controller {
     public List<Fad> getModneFade() {
         List<Fad> res = new ArrayList<>();
         for (Fad fad : getFade()) {
-            if (fad.getVæske() != null && 3 >= ChronoUnit.YEARS.between(fad.getVæske().getFørsteLagring(), LocalDate.now())) {
+            if (fad.getVæske() != null && 3 <= ChronoUnit.YEARS.between(fad.getVæske().getFørsteLagring(), LocalDate.now())) {
                 res.add(fad);
             }
         }
