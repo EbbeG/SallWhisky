@@ -55,7 +55,7 @@ public class StorageInitializer {
         fadMap.put(fad1, 30.0);
         fadMap.put(fad2, 40.0);
         Whisky whisky1 = controller.createWhisky(1, WhiskyType.SINGLEMALT, "Kraftig whisky", 55.5, 5, fadMap);
-        System.out.println(whisky1.getInfo());
+
 
 
 
